@@ -18,11 +18,32 @@ http://www.springframework.org/schema/tx
        xmlns:p="http://www.springframework.org/schema/p"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns="http://www.springframework.org/schema/beans">
-    <mvc:annotation-driven/>
-    <context:component-scan base-package="com.neuedu.web"/>
-    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property value="org.springframework.web.servlet.view.JstlView" name="viewClass"/>
-        <property value="WEB-INF/pages/" name="prefix"/>
-        <property value=".jsp" name="suffix"/>
+
+    <!--扫包-->
+    <context:component-scan base-package="com.neuedu.service"/>
+
+
+    <bean  id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://127.0.0.1:3306/user?useUnicode=true&amp;characterEncoding=utf-8"/>
+        <property name="username" value="root"/>
+        <property name="password" value="123456"/>
     </bean>
+    <bean class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+            <!--引用上面的dataSource-->
+        <property name="typeAliasesPackage" value="com.neuedu.pojo"/>
+            <!--起别名,注意是包名,不少类名-->
+    </bean>
+
+    <!--在springmvc与mybatis整合时，需要对每一个mapper定义对应的一个MapperFactoryBean，
+    可以使用MapperScannerConfigurer自动扫描mapper，
+    然后自动为我们注册对应的MapperFactoryBean对象。-->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+            <property name="basePackage" value="com.neuedu.dao"/>
+    </bean>
+
+
+    <bean name="service" class="com.neuedu.service.UserServiceImpl"/>
+
 </beans>
