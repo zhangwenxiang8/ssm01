@@ -46,4 +46,13 @@ http://www.springframework.org/schema/tx
 
     <bean name="service" class="com.neuedu.service.UserServiceImpl"/>
 
+    <bean class="com.neuedu.ssmtest.BeanTestC"/>
+
+    <bean name="dept" class="com.neuedu.pojo.Dept">
+        <property name="pname" value="=jksdaldj" />
+    </bean>
+
+
+
+
 </beans>
