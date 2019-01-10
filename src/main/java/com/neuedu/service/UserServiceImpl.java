@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 @Service
 public class UserServiceImpl implements IuserService {
@@ -15,11 +16,15 @@ public class UserServiceImpl implements IuserService {
 
  /*@Autowired 注释，它可以对类成员变量、方法及构造函数进行标注，
  完成自动装配的工作。 通过 @Autowired的使用来消除 set ，get方法。*/
-    @Autowired
+
+
+    @Resource
+    /*依赖注入  控制反转*/
     private UserDao userDao;
 
+
     @Override
-    public List<User> Listss() {
+    public List<User> Lists() {
         return userDao.Lists();
     }
 

@@ -33,7 +33,26 @@ http://www.springframework.org/schema/tx
         <property name="dataSource" ref="dataSource"/>
             <!--引用上面的dataSource-->
         <property name="typeAliasesPackage" value="com.neuedu.pojo"/>
-            <!--起别名,注意是包名,不少类名-->
+            <!--起别名,注意是包名,不是类名-->
+
+        <!-- 识别 url 使用的什么数据库 -->
+        <!-- 页码为零时 -->
+        <!--合理分页的条数-->
+        <!-- 分页信息 -->
+        <!-- 与Num搭着一起用 -->
+        <property name="plugins">
+                      <bean class="com.github.pagehelper.PageInterceptor">
+                          <property name="properties">
+                        <value>
+                            helperDialect=mysql
+                            pageSizeZero=true
+                            reasonable=true
+                            offsetAsPageNum=true
+                            rowBoundsWithCount=true
+                        </value>
+                 </property>
+              </bean>
+        </property>
     </bean>
 
     <!--在springmvc与mybatis整合时，需要对每一个mapper定义对应的一个MapperFactoryBean，
@@ -46,11 +65,11 @@ http://www.springframework.org/schema/tx
 
     <bean name="service" class="com.neuedu.service.UserServiceImpl"/>
 
-    <bean class="com.neuedu.ssmtest.BeanTestC"/>
+    <!--<bean class="com.neuedu.testanTestC"/>-->
 
-    <bean name="dept" class="com.neuedu.pojo.Dept">
-        <property name="pname" value="=jksdaldj" />
-    </bean>
+    <!--<bean name="dept" class="com.neuedu.pojo.Dept">-->
+        <!--<property name="pname" value="=jksdaldj" />-->
+    <!--</bean>-->
 
 
 

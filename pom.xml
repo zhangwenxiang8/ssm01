@@ -111,6 +111,14 @@
       <version>3.2.5</version>
     </dependency>
 
+    <!-- https://mvnrepository.com/artifact/com.github.pagehelper/pagehelper -->
+    <!-- 分页jay包 -->
+    <dependency>
+      <groupId>com.github.pagehelper</groupId>
+      <artifactId>pagehelper</artifactId>
+      <version>5.1.2</version>
+    </dependency>
+
 
   </dependencies>
 

@@ -1,4 +1,4 @@
-package com.neuedu.ssmtest;
+package com.neuedu.test;
 
 import com.neuedu.pojo.Dept;
 import org.springframework.beans.BeansException;
